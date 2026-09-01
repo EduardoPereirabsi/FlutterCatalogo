@@ -1,6 +1,5 @@
 # Catálogo do Multiverso
 
-
 Aplicativo Flutter de catálogo interativo desenvolvido para o **Projeto Somativo
 da disciplina de Desenvolvimento Mobile Híbrido** (Bacharelado em Sistemas de
 Informação).
