@@ -1,0 +1,18 @@
+# Regras de analise estatica do projeto.
+# `flutter_lints` e o conjunto oficial recomendado pela equipe do Flutter.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    # Diretorios gerados pelo proprio Flutter: nao sao codigo nosso.
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+
+linter:
+  rules:
+    # Nenhum `print` em codigo de producao: erros vao para a UI, nao para o log.
+    avoid_print: true
+    # Deixa explicito o que nao muda depois de atribuido.
+    prefer_final_locals: true

@@ -1,0 +1,7 @@
+{
+  // O VS Code sugere estas extensoes ao abrir o projeto.
+  "recommendations": [
+    "Dart-Code.flutter",
+    "Dart-Code.dart-code"
+  ]
+}

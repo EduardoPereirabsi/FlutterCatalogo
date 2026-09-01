@@ -1,0 +1,53 @@
+{
+  // Configuracoes de execucao do VS Code (F5 / painel "Run and Debug").
+  //
+  // As credenciais do Supabase NAO ficam aqui: a configuracao de bonus le o
+  // arquivo `env.local.json`, que esta no .gitignore. Copie `env.example.json`
+  // para `env.local.json` e preencha antes de usar aquela configuracao.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Padrao: o VS Code pergunta o dispositivo (barra de status, canto
+      // inferior direito). Modo local, sem Supabase.
+      "name": "Catalogo (modo local)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart"
+    },
+    {
+      // Mais rapido para desenvolver: abre no Chrome com hot reload.
+      "name": "Catalogo (Chrome)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "chrome"
+    },
+    {
+      // Janela em proporcao de celular - boa para gravar o video e tirar as
+      // screenshots do PDF sem depender do emulador Android.
+      "name": "Catalogo (Chrome, janela de celular)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "chrome",
+      "args": ["--web-browser-flag=--window-size=430,932"]
+    },
+    {
+      // BONUS RF06/RF07: autenticacao real + sincronizacao na nuvem.
+      // Requer `env.local.json` preenchido.
+      "name": "Catalogo (bonus Supabase)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file=env.local.json"]
+    },
+    {
+      // Build de release, para conferir o app fora do modo debug.
+      "name": "Catalogo (release)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "release"
+    }
+  ]
+}

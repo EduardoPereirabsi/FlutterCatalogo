@@ -1,0 +1,13 @@
+# Normaliza as quebras de linha no repositorio.
+# Sem isto, cada integrante do grupo em Windows veria o projeto inteiro como
+# "modificado" so por causa de CRLF, poluindo os diffs e os commits.
+* text=auto eol=lf
+
+# Arquivos binarios: nunca converter.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary
+*.otf binary
+*.jar binary
+*.keystore binary

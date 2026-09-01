@@ -1,0 +1,33 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# pubspec.lock NAO entra aqui: em aplicativos ele deve ser versionado, para
+# que todo mundo (e o professor) compile com as mesmas versoes de pacote.
+
+# IDE
+.idea/
+# Gerado pela extensao Java do VS Code, nao faz parte do projeto.
+.github/modernize/
+*.iml
+*.log
+
+# Android / iOS gerados
+android/.gradle/
+android/local.properties
+android/key.properties
+ios/Pods/
+ios/.symlinks/
+
+# SEGREDOS - nunca versionar (criterio "ausencia de segredos expostos")
+.env
+env.json
+env.local.json
+lib/secrets.dart
+google-services.json
+GoogleService-Info.plist

@@ -1,0 +1,38 @@
+name: catalogo_multiverso
+description: >-
+  Catalogo Interativo do Multiverso - Projeto Somativo da disciplina de
+  Desenvolvimento Mobile Hibrido (Flutter). Consome a Rick and Morty API.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # RF01/RF03/RF08 - consumo assincrono da API publica
+  http: ^1.2.1
+
+  # RF04/RF05 - gerenciamento de estado global compartilhado
+  provider: ^6.1.2
+
+  # RF06 (baseline) - persistencia local obrigatoria
+  shared_preferences: ^2.2.3
+
+  # RF07 (baseline) - hash de senha do login local (nunca salvamos texto puro)
+  crypto: ^3.0.3
+
+  # RF06/RF07 (BONUS) - persistencia em nuvem + autenticacao real
+  supabase_flutter: ^2.5.6
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

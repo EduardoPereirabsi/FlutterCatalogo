@@ -1,0 +1,40 @@
+{
+  // Formata ao salvar com o formatador oficial do Dart (linha de 80 colunas).
+  "editor.formatOnSave": true,
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  // Sugere `const` e organiza imports automaticamente ao salvar.
+  "dart.previewFlutterUiGuides": true,
+  // Tira o ruido das pastas geradas da busca e da arvore de arquivos.
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/build": true,
+    "**/*.iml": true
+  },
+  // As extensoes Java/Gradle (redhat.java, vscjava.*) tentam importar a pasta
+  // android/ como projeto Java e reportam dezenas de erros de classpath em
+  // arquivos que o proprio Flutter gerou. Nada disso afeta o build - o que
+  // vale e o `flutter analyze`. Silenciado apenas neste projeto.
+  "java.import.gradle.enabled": false,
+  "java.import.maven.enabled": false,
+  "java.project.importOnFirstTimeStartup": "disabled",
+  "java.import.exclusions": [
+    "**/android/**",
+    "**/ios/**",
+    "**/build/**",
+    "**/.dart_tool/**"
+  ],
+
+  "search.exclude": {
+    "**/build": true,
+    "**/.dart_tool": true,
+    "android/**": true,
+    "ios/**": true,
+    "web/**": true
+  }
+}
