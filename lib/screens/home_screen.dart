@@ -277,35 +277,36 @@ class _CatalogGrid extends StatelessWidget {
     final double aspectRatio =
         (0.68 - (textScale - 1) * 0.24).clamp(0.40, 0.80).toDouble();
 
-    return CustomScrollView(
-      // `always` garante que o pull-to-refresh funcione mesmo com poucos itens.
-      physics: const AlwaysScrollableScrollPhysics(),
-      slivers: <Widget>[
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
-          sliver: SliverGrid(
+    return Column(
+      children: <Widget>[
+        // RF01 - a `GridView.builder` constroi as celulas sob demanda: com 826
+        // personagens no catalogo, so as visiveis existem na arvore de widgets.
+        Expanded(
+          child: GridView.builder(
+            padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
+            // `always` garante que o pull-to-refresh funcione mesmo quando ha
+            // poucos itens e a grade nao chega a ter rolagem.
+            physics: const AlwaysScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: columns,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               childAspectRatio: aspectRatio,
             ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                final Character character = catalog.items[index];
-                return CharacterCard(
-                  key: ValueKey<int>(character.id),
-                  character: character,
-                  onTap: () => onOpen(character),
-                );
-              },
-              childCount: catalog.items.length,
-            ),
+            itemCount: catalog.items.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Character character = catalog.items[index];
+              return CharacterCard(
+                key: ValueKey<int>(character.id),
+                character: character,
+                onTap: () => onOpen(character),
+              );
+            },
           ),
         ),
-        SliverToBoxAdapter(
-          child: _PaginationFooter(catalog: catalog),
-        ),
+        // O rodape fica FORA da area rolavel: o "Carregar Mais" continua
+        // alcancavel sem precisar rolar ate o fim da grade.
+        _PaginationFooter(catalog: catalog),
       ],
     );
   }

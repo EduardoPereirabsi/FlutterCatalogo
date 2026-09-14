@@ -79,22 +79,6 @@ Future<void> _entrar(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
-/// Rola o catalogo ate o rodape de paginacao ficar visivel.
-///
-/// Precisa dizer QUAL scrollable: o `TextField` da busca tambem contem um
-/// `Scrollable` interno, entao o padrao do `scrollUntilVisible` encontra dois.
-Future<void> _rolarAteORodape(WidgetTester tester) async {
-  await tester.scrollUntilVisible(
-    find.text('Carregar Mais'),
-    400,
-    scrollable: find.descendant(
-      of: find.byType(CustomScrollView),
-      matching: find.byType(Scrollable),
-    ),
-  );
-  await tester.pumpAndSettle();
-}
-
 void main() {
   setUp(() {
     // Cada teste comeca com o armazenamento vazio.
@@ -124,14 +108,12 @@ void main() {
     await tester.pumpAndSettle();
     await _entrar(tester);
 
-    await _rolarAteORodape(tester);
     expect(find.text('Exibindo 20 de 60 personagens'), findsOneWidget);
 
     await tester.tap(find.text('Carregar Mais'));
     await tester.pumpAndSettle();
 
     // A lista ACUMULOU: 40, nao 20 substituidos por outros 20.
-    await _rolarAteORodape(tester);
     expect(find.text('Exibindo 40 de 60 personagens'), findsOneWidget);
     expect(api.chamadasDeLista, 2);
   });
@@ -144,12 +126,10 @@ void main() {
     await tester.pumpAndSettle();
     await _entrar(tester);
 
-    await _rolarAteORodape(tester);
     await tester.tap(find.text('Carregar Mais'));
     await tester.pumpAndSettle();
 
     // Mensagem amigavel, e o catalogo ja carregado continua la.
-    await _rolarAteORodape(tester);
     expect(find.text('Sem conexao com a internet.'), findsOneWidget);
     expect(find.text('Exibindo 20 de 60 personagens'), findsOneWidget);
   });
